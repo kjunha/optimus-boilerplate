@@ -1,0 +1,11 @@
+version: '3'
+services:
+    server:
+        build: ./server
+        tty: true
+        working_dir: /usr/src/app
+        volumes: 
+            - ./server:/usr/src/app
+        ports: 
+            - "3000:3000"
+        container_name: express-server
