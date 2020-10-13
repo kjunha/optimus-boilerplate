@@ -1,6 +1,7 @@
 <template>
   <div class="home">
-    <p class="text-primary">Hello Vue!!</p>
+    <p class="text-primary">{{mounted}}</p>
+
     <img alt="Vue logo" src="../assets/logo.png">
     <HelloWorld msg="Welcome to Your Vue.js App"/>
   </div>
@@ -9,11 +10,23 @@
 <script>
 // @ is an alias to /src
 import HelloWorld from '@/components/HelloWorld.vue'
+import axios from 'axios'
 
 export default {
   name: 'Home',
   components: {
     HelloWorld
+  },
+  data: () => {
+    return {
+      mounted: 'mounted-Data',
+    }
+  },
+  created() {
+    console.log('MSG >>> Hello vue!');
+    axios.get('http://localhost:3000').then((res) => {
+      console.log(`AXIOS >>> ${res.data}`)
+    })
   }
 }
 </script>

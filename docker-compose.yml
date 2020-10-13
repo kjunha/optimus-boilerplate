@@ -3,6 +3,9 @@ services:
     client:
         build: ./client
         tty: true
+        networks: 
+            optimus_net:
+                ipv4_address: 172.19.0.10
         working_dir: /usr/src/app
         volumes: 
             - ./client:/usr/src/app
@@ -12,9 +15,18 @@ services:
     server:
         build: ./server
         tty: true
+        networks: 
+            optimus_net:
+                ipv4_address: 172.19.0.20
         working_dir: /usr/src/app
         volumes: 
             - ./server:/usr/src/app
         ports: 
             - 3000:3000
         container_name: express-server
+networks:
+    optimus_net:
+        driver: bridge
+        ipam:
+            config:
+                - subnet: 172.19.0.0/24
