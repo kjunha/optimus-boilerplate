@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <p class="text-danger">EXAMPLE TEXT</p>
+    <p class="text-primary">Hello Vue!!</p>
     <img alt="Vue logo" src="../assets/logo.png">
     <HelloWorld msg="Welcome to Your Vue.js App"/>
   </div>
