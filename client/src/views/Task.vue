@@ -11,16 +11,20 @@
       <table class="table table-striped mx-5 my-5">
         <thead>
           <tr>
-            <th>ID</th>
+            <th>No</th>
+            <th>PK</th>
             <th>Contents</th>
             <th>Created At</th>
+            <th>Action</th>
           </tr>
         </thead>
         <tbody>
           <tr v-for="(item, index) in contents" v-bind:key="index">
-            <th>{{ item.task_id }}</th>
+            <th>{{ index + 1 }}</th>
+            <td>{{ item.task_id }}</td>
             <td>{{ item.title }}</td>
             <td>{{ item.created_at }}</td>
+            <td><button class="btn btn-danger btn-rounded btn-sm" v-on:click="deleteTask(item.task_id)">delete</button></td>
           </tr>
         </tbody>
       </table>
@@ -35,25 +39,37 @@ export default {
   name: 'Task',
   data: () => {
     return {
+      baseUrl: 'http://localhost:3000/tasks',
       newTask: '',
       contents: [],
     }
   },
   methods: {
     submitTask: function () {
+      if(this.newTask.length == 0) {
+        alert('내용을 입력해 주세요');
+        return;
+      }
       const body = {
         task: this.newTask
       }
-      axios.post('http://localhost:3000/tasks/new', body).then((res) => {
+      axios.post(`${this.baseUrl}/new`, body).then((res) => {
         console.log(JSON.stringify(res));
         alert('등록되었습니다');
-      }).catch((err) => { console.error(err) })
+      }).catch((err) => { console.error(err) });
+    },
+    deleteTask: function(id) {
+      axios.delete(`${this.baseUrl}/${id}`).then((res) => {
+        console.log(JSON.stringify(res));
+        alert('삭제되었습니다');
+        location.reload();
+      }).catch((err) => { console.error(err) });
     }
   },
   created() {
-    axios.get('http://localhost:3000/tasks').then((res) => {
+    axios.get(`${this.baseUrl}`).then((res) => {
       this.contents = res.data;
-    }).catch((err) => { console.error(err) })
+    }).catch((err) => { console.error(err) });
   }
 }
 </script>

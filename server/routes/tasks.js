@@ -27,4 +27,12 @@ router.post('/new', (req, res) => {
     });
 });
 
+router.delete('/:id', (req, res) => {
+    connection.query(`delete from task where task_id = ${req.params.id}`, (err, rows) => {
+        if(err) console.error(err);
+        console.log('delete test: \n' + JSON.stringify(rows, null, '\t'));
+        res.json(rows);
+    })
+})
+
 module.exports = router;
