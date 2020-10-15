@@ -27,6 +27,14 @@ router.post('/new', (req, res) => {
     });
 });
 
+router.get('/:id', (req, res) => {
+    connection.query(`select * from task where task_id = ${req.params.id}`, (err, rows) => {
+        if(err) console.error(err);
+        console.log('get test: \n' + JSON.stringify(rows, null, '\t'));
+        res.json(rows);
+    });
+})
+
 router.delete('/:id', (req, res) => {
     connection.query(`delete from task where task_id = ${req.params.id}`, (err, rows) => {
         if(err) console.error(err);

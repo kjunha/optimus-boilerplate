@@ -13,7 +13,13 @@ const routes = [
     // route level code-splitting
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
-    component: () => import('../views/Task.vue')
+    component: () => import('../views/task/list.vue')
+  },
+  {
+    path: '/tasks/:id',
+    name: 'TaskItem',
+    props: (route) => ({task_id: route.params.id}),
+    component: () => import('../views/task/item.vue')
   }
 ]
 

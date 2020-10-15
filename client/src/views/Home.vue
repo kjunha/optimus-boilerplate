@@ -25,7 +25,10 @@ export default {
   created() {
     axios.get('http://localhost:3000').then((res) => {
       this.mounted = res.data;
-    })
+    }).catch((err) => {
+      console.error(err)
+      this.mounted = 'something went wrong :('
+    });
   }
 }
 </script>

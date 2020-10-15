@@ -1,5 +1,5 @@
 <template>
-  <div class="about">
+  <div class="task-list">
     <h2>Register Your Task</h2>
     <div class="search d-flex justify-content-center">
       <form class="form-inline" v-on:submit="submitTask()">
@@ -21,7 +21,7 @@
         <tbody>
           <tr v-for="(item, index) in contents" v-bind:key="index">
             <th>{{ index + 1 }}</th>
-            <td>{{ item.task_id }}</td>
+            <td><a v-bind:href="`/tasks/${item.task_id}`">{{ item.task_id }}</a></td>
             <td>{{ item.title }}</td>
             <td>{{ item.created_at }}</td>
             <td><button class="btn btn-danger btn-rounded btn-sm" v-on:click="deleteTask(item.task_id)">delete</button></td>
