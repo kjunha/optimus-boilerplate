@@ -24,6 +24,20 @@ services:
         ports: 
             - 3000:3000
         container_name: express-server
+    db:
+        image: mysql:latest
+        restart: always
+        tty: true
+        networks: 
+            optimus_net:
+                ipv4_address: 172.19.0.30
+        env_file: 
+            - .env
+        volumes:
+            - ./mysql/data:/var/lib/mysql
+        container_name: mysql_db
+        
+        
 networks:
     optimus_net:
         driver: bridge
