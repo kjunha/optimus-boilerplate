@@ -25,7 +25,7 @@ export default {
   created() {
     console.log('MSG >>> Hello vue!');
     axios.get('http://localhost:3000').then((res) => {
-      console.log(`AXIOS >>> ${res.data}`)
+      this.mounted = res.data;
     })
   }
 }
