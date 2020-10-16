@@ -1,5 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import Home from '../views/Home.vue'
+import NotFound from '../views/default/NotFound.vue'
 
 const routes = [
   {
@@ -20,6 +21,11 @@ const routes = [
     name: 'TaskItem',
     props: (route) => ({task_id: route.params.id}),
     component: () => import('../views/task/item.vue')
+  },
+  {
+    path: '/:pathMatch(.*)*',
+    name: 'NotFound',
+    component: NotFound
   }
 ]
 
