@@ -24,6 +24,8 @@ services:
         ports: 
             - 3000:3000
         container_name: express-server
+        depends_on: 
+            - db_mysql
     db_mysql:
         image: mysql:latest
         restart: always

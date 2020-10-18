@@ -23,6 +23,11 @@ const routes = [
     component: () => import('../views/task/item.vue')
   },
   {
+    path: '/chats',
+    name: 'Chat',
+    component: () => import('../views/chat/chat.vue')
+  },
+  {
     path: '/:pathMatch(.*)*',
     name: 'NotFound',
     component: NotFound

@@ -53,14 +53,12 @@ export default {
       const body = {
         task: this.newTask
       }
-      axios.post(`${this.baseUrl}/new`, body).then((res) => {
-        console.log(JSON.stringify(res));
+      axios.post(`${this.baseUrl}/new`, body).then(() => {
         alert('등록되었습니다');
       }).catch((err) => { console.error(err) });
     },
     deleteTask: function(id) {
-      axios.delete(`${this.baseUrl}/${id}`).then((res) => {
-        console.log(JSON.stringify(res));
+      axios.delete(`${this.baseUrl}/${id}`).then(() => {
         alert('삭제되었습니다');
         location.reload();
       }).catch((err) => { console.error(err) });
