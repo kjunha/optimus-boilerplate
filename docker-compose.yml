@@ -9,6 +9,7 @@ services:
         working_dir: /usr/src/app
         volumes: 
             - ./client:/usr/src/app
+            - /usr/src/app/node_modules/
         ports: 
             - 80:8080
         container_name: vue-client
@@ -21,6 +22,7 @@ services:
         working_dir: /usr/src/app
         volumes: 
             - ./server:/usr/src/app
+            - /usr/src/app/node_modules/
         ports: 
             - 3000:3000
         container_name: express-server
