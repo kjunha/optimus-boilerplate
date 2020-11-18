@@ -28,6 +28,16 @@ const routes = [
     component: () => import('../views/chat/chat.vue')
   },
   {
+    path: '/gallery',
+    name: 'Gallery',
+    component: () => import('../views/gallery/main.vue')
+  },
+  {
+    path: '/gallery/new',
+    name: 'CreateGallery',
+    component: () => import('../views/gallery/new.vue')
+  },
+  {
     path: '/:pathMatch(.*)*',
     name: 'NotFound',
     component: NotFound

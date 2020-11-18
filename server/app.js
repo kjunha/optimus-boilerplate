@@ -8,6 +8,7 @@ var cors = require('cors')
 // load Router
 var indexRouter = require('./routes/index');
 var taskRouter = require('./routes/tasks');
+var imageRouter = require('./routes/images');
 
 // load Sockets
 var chatSocket = require('./sockets/chats');
@@ -25,6 +26,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 // set Router
 app.use('/', indexRouter);
 app.use('/tasks', taskRouter);
+app.use('/images', imageRouter);
+app.use('/public', express.static('public'))
 
 // plug Socket
 chatSocket(app.io.of('/chats'));
